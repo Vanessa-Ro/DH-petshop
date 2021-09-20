@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap');
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -66,14 +70,14 @@ section.home h1 {
     color: #757575;
 }
 
-/* Serviços */
+/* Serviços da Home*/
 
-section.services {
+section.services-home {
     background-color: #E5E5E5;
     padding: 50px 0;
 }
 
-section.services h2 {
+section.services-home h2 {
     text-transform: uppercase;
     font-size: 30px;
     font-weight: 400;
@@ -81,23 +85,23 @@ section.services h2 {
     padding-bottom: 20px;
 }
 
-section.services .quadrado {
+section.services-home .quadrado {
     width: 266px;
     height: 264px;
     background-color: #FFFFFF;
 }
 
-section.services .artigos {
+section.services-home .artigos {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
 }
 
-section.services .artigos h3, p {
+section.services-home .artigos h3, p {
     font-size: 22px;
 }
 
-/* Descrição */
+/* Descrição da Home*/
 
 section.desc .container {
     display: flex;
@@ -119,6 +123,89 @@ section.desc .descricao p {
     font-weight: 400;
     line-height: 25px;
     color: #757575;
+}
+
+/* Serviços */
+section.services h2 {
+    text-transform: uppercase;
+    color: #FFBE51;
+    font-size: 40px;
+    font-weight: 700;
+    text-align: center;
+    padding-top: 40px;
+}
+
+section.services article{
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    padding: 60px;
+}
+
+section.services img {
+    width: 266px;
+    height: 264px;
+}
+
+section.services .lateral {
+   align-items: center;
+   width: 58%;
+   margin-bottom: 2.5rem;
+}
+
+section.services .lateral h3 {
+    text-transform: uppercase;
+    font-size: 28px;
+}
+
+section.services .lateral span {
+    font-size: 22px;
+    font-weight: 400;
+}
+
+section.services .lateral p {
+    font-size: 18px;
+    font-weight: 400;
+    color: #757575;
+    text-align: justify;
+    line-height: 25px;
+    padding-bottom: 20px;
+}
+
+section.services .lateral button {
+    border: none;
+    background-color: #FFC107;
+    padding: 8px;
+    width: 15rem;
+    font-size: 15px;
+    font-weight: 800;
+    color: #FFFFFF;
+    
+}
+
+section.services .barrinha {
+    width: 100%;
+    height: 3px;
+    background: #C4C4C4;
+    margin: 30px 0;
+}
+
+
+/* Trabalhe Conosco */
+form input, form textarea, select {
+    width: 100%;
+    padding: 5px;
+    margin: 5px 0 20px;
+    resize: none;
+}
+
+form button {
+    padding: 5px 10px;
+    text-transform: uppercase;
+    background-color: #FFBE51;
+    border: 0;
+    color: #FFFFFF;
+    font-weight: 600;
 }
 
 /* Footer */
@@ -177,5 +264,6 @@ footer .copyright h4 {
     text-align: center;
 
 }
+
 
 
