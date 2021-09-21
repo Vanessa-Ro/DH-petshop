@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap');
 
+/* Geral */
+
 * {
     box-sizing: border-box;
 }
@@ -15,6 +17,8 @@ body {
     max-width: 100%;
     margin: 0 auto;
 }
+
+/* Header e Nav */
 
 header {
     background-color: #FFBE51;
@@ -126,6 +130,7 @@ section.desc .descricao p {
 }
 
 /* Serviços */
+
 section.services h2 {
     text-transform: uppercase;
     color: #FFBE51;
@@ -190,6 +195,67 @@ section.services .barrinha {
     margin: 30px 0;
 }
 
+/* Contato */
+
+section.contact .container {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+section.contact h2 {
+    text-transform: uppercase;
+    color: #FFBE51;
+    font-size: 40px;
+    font-weight: 800;
+}
+
+section.contact .geral {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+section.contact .formulario {
+    width: 100%;
+}
+
+section.contact .formulario button {
+    width: 100%;
+}
+
+section.contact form ::placeholder {
+    font-family: "Nunito", sans-serif;
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+section.contact .contatar {
+    padding-left: 80px;
+}
+
+section.contact .contato p, section.contact .endereco p {
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 10px;
+}
+
+section.contact .endereco p:first-child {
+    padding-top: 25px;
+} 
+
+section.contact .contato a {
+    text-decoration: none;
+    color: #000000;
+}
+
+section.contact .mapa {
+    padding: 20px 0;
+}
+
+
+
 
 /* Trabalhe Conosco */
 form input, form textarea, select {
@@ -210,7 +276,7 @@ form button {
 
 /* Footer */
 
-footer {
+footer.footer-1 {
     background-color: #FFBE51;
     padding-top: 30px;
 }
