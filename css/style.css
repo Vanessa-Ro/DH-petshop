@@ -656,6 +656,14 @@ footer .copyright h4 {
   }
 }
 
+@media (max-width: 800px) {
+  .container-pets {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 @media (max-width: 740px) {
   header .container {
     flex-wrap: wrap;
@@ -677,6 +685,7 @@ footer .copyright h4 {
     white-space: nowrap;
   }
 }
+
 
 @media (max-width: 600px) {
   section.home h1 {
@@ -747,6 +756,10 @@ footer .copyright h4 {
     width: 100%;
   }
 
+  .pets {
+    width: 20rem;
+  }
+
   footer.footer-1 .logo img {
     margin-left: 40px;
   }
@@ -769,6 +782,16 @@ footer .copyright h4 {
   section.contact .contato p,
   section.contact .endereco p {
     font-size: 14px;
+  }
+}
+
+@media (max-width: 350px) {
+  .card {
+    width: 15rem !important;
+  }
+
+  .pets {
+    width: 15rem !important;
   }
 }
 
