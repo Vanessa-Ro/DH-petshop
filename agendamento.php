@@ -12,14 +12,19 @@
     </head>
 
   <body>
-    <header>
+  <header>
       <div class="container">
         <div class="logo">
           <img src="img/logo.png" alt="Logo do Petshop" />
         </div>
 
         <nav>
-          <ul>
+            <div class="mobile-menu" id="mobile-menu">
+              <div class="line1"></div>
+              <div class="line2"></div>
+              <div class="line3"></div>
+            </div>
+          <ul class="nav-list" id="nav-list">
             <li>
               <a href="index.php">Sobre</a>
             </li>
@@ -152,6 +157,8 @@
         <h4>Petshop DH - 2021</h4>
       </div>
     </footer>
-  </body>
 
+    <script src="js/mobile-navbar.js"></script>
+    
+  </body>
 </html>

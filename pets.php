@@ -19,12 +19,12 @@
         </div>
 
         <nav>
-            <div class="mobile-menu">
+            <div class="mobile-menu" id="mobile-menu">
               <div class="line1"></div>
               <div class="line2"></div>
               <div class="line3"></div>
             </div>
-          <ul class="nav-list">
+          <ul class="nav-list" id="nav-list">
             <li>
               <a href="index.php">Sobre</a>
             </li>

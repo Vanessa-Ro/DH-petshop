@@ -42,5 +42,21 @@ class MobileNavbar {
     ".nav-list li",
   );
   mobileNavbar.init();
-  Footer
+  // Footer
   
+  const menuBtn = document.getElementById('mobile-menu');
+  
+  menuBtn.addEventListener('click', () => {
+    const links = document.getElementById('nav-list');
+    
+    if(links.classList.contains('active-menu'))
+      links.classList.remove('active-menu');
+      else
+      links.classList.add('active-menu');
+      
+    // if(links.style.display == "none")
+    //   links.style.display = "flex";
+    // else
+    //   links.style.display = "none";
+
+  })
