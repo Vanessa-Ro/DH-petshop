@@ -49,7 +49,7 @@
         <img src="img/img-cadastro.png" alt="Ilustração cadastro" />
 
         <div class="formulario">
-          <form method="post" action="php/validacad.php">
+          <form method="post" action="php/validacao/validacad.php">
             <h2>Cadastre-se</h2>
 
             <input type="text" name="nome" id="nome" placeholder="Nome" value="<?= isset($_SESSION['nome']) ? $_SESSION['nome'] : '' ?>" />
@@ -98,7 +98,7 @@
               }
               unset($_SESSION['csenha_erro']);
             ?>
-            
+            <br>
             <input type="checkbox" name="check" id="check" <?= isset($_SESSION['checkbox']) ? 'checked' : '' ?>>
             <label for="check">Aceito os cookies</label>
             

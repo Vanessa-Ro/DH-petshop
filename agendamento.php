@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  include_once('php/Animal.php');
+  include_once('php/Servico.php');
+  include_once('php/Agendamento.php');
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -65,24 +72,52 @@
         <div class="tab-content p-5" id="myTabContent">
           <div class="tab-pane fade show active" id="novoagendamento" role="tabpanel" aria-labelledby="profile-tab">
             <div class="formulario">
-              <form>
+              <form method="post" action="php/validacao/validaagend.php">
                 <h2>Novo agendamento</h2>
       
                 <label for="service">Serviço</label>
-                <select name="service">
-                  <option value="banho" selected>Banho</option>
-                  <option value="tosa" >Tosa</option>
+                <select name="service" id="service">
+                  <?php
+                    foreach($servicos as $servico) :
+                  ?>
+                  <option value="<?= $servico->getNomeServico() ?>"><?= $servico->getNomeServico() ?></option>
+                  <?php
+                    endforeach;
+                  ?>
                 </select>
-                <label for="service">Data</label>
-                <input type="date" name="date" id="date" placeholder="Data" required />
-                <label for="service">Horário</label>
-                <input type="time" name="time" id="time" placeholder="Horário" required />
-                <label for="pet">Pet</label>
-                <input name="pet" id="pet" list="pets" />
-                <datalist id="pets">
-                  <option value="pet 1">
-                  <option value="pet 2">
-                </datalist>
+
+                <label for="date">Data</label>
+                <input type="date" name="date" id="date" placeholder="Data" />
+                <?php
+                  if(isset($_SESSION['data_erro'])) {
+                ?>
+                <span class="fs-6 text-danger mb-2"><?= $_SESSION['data_erro'] ?></span><br>
+                <?php
+                  }
+                  unset($_SESSION['data_erro']);
+                ?>
+
+                <label for="time">Horário</label>
+                <input type="time" name="time" id="time" placeholder="Horário" />
+                <?php
+                  if(isset($_SESSION['hora_erro'])) {
+                ?>
+                <span class="fs-6 text-danger mb-2"><?= $_SESSION['hora_erro'] ?></span><br>
+                <?php
+                  }
+                  unset($_SESSION['hora_erro']);
+                ?>
+
+                <label for="pets">Pet</label>
+                <select name="pet" id="pets">
+                  <?php
+                    foreach($pets as $pet) :
+                  ?>
+                  <option value="<?= $pet->getNome() ?>"><?= $pet->getNome() ?></option>
+                  <?php
+                    endforeach;
+                  ?>
+                </select>
                         
                 <div class="botao">
                   <button>enviar</button>
@@ -92,30 +127,20 @@
           </div>
           <div class="tab-pane fade" id="meusagendamento" role="tabpanel" aria-labelledby="home-tab">
             <div class="d-grid container-pets">
+              <?php
+                foreach($agendamentos as $agendamento) :
+              ?>
               <div class="card m-2" style="width: 20rem;">
                 <div class="card-body">
-                  <h5 class="card-title">Nome do pet</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Serviço</h6>
-                  <p class="card-text">Data e horário</p>
+                  <h5 class="card-title"><?= $pet1->getNome() ?></h5>
+                  <h6 class="card-subtitle mb-2 text-muted"><?= $consulta->getNomeServico() ?></h6>
+                  <p class="card-text"><?= $agendamento->getData() ?> - <?= $agendamento->getHorario() ?></p>
                   <a href="#" class="card-link text-danger">Cancelar</a>
                 </div>
               </div>
-              <div class="card m-2" style="width: 20rem;">
-                <div class="card-body">
-                  <h5 class="card-title">Nome do pet</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Serviço</h6>
-                  <p class="card-text">Data e horário</p>
-                  <a href="#" class="card-link text-danger">Cancelar</a>
-                </div>
-              </div>
-              <div class="card m-2" style="width: 20rem;">
-                <div class="card-body">
-                  <h5 class="card-title">Nome do pet</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Serviço</h6>
-                  <p class="card-text">Data e horário</p>
-                  <a href="#" class="card-link text-danger">Cancelar</a>
-                </div>
-              </div>
+              <?php
+                endforeach;
+              ?>
             </div>
           </div>
         </div>

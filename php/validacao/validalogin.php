@@ -28,9 +28,9 @@ if(empty(trim($senha)) or (strlen($senha) <=5 )){
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 
-if($email_erro == "" && $senha_erro == ""){
-  $email = $this->getEmail();
-  $senha = $this->getSenha();
-}
+// if($email_erro == "" && $senha_erro == ""){
+//   $email = $this->getEmail();
+//   $senha = $this->getSenha();
+// }
 
 ?>

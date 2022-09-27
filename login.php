@@ -49,7 +49,7 @@
     <div class="container">
       <img src="img/img-login.png" alt="Ilustração homem e gato em um sofá">
       <div class="formulario">
-        <form method="post" action="php/validalogin.php">
+        <form method="post" action="php/validacao/validalogin.php">
           <h2>Login</h2>
 
           <?php
@@ -71,7 +71,7 @@
             unset($_SESSION['email_erro']);
           ?>
 
-          <input type="password" name="senha" id="senha" placeholder="Senha" value="<?= isset($_SESSION['senha']) ? $_SESSION['senha'] : '' ?>" >
+          <input type="password" name="senha" id="senha" placeholder="Senha" >
           <?php
             if(isset($_SESSION['senha_erro'])) {
           ?>
@@ -79,6 +79,7 @@
           <?php
             }
             unset($_SESSION['senha_erro']);
+            
             unset($_SESSION['email']);
             unset($_SESSION['senha']);
           ?>
