@@ -19,7 +19,12 @@
         </div>
 
         <nav>
-          <ul>
+            <div class="mobile-menu">
+              <div class="line1"></div>
+              <div class="line2"></div>
+              <div class="line3"></div>
+            </div>
+          <ul class="nav-list">
             <li>
               <a href="index.php">Sobre</a>
             </li>
@@ -159,6 +164,8 @@
         <h4>Petshop DH - 2021</h4>
       </div>
     </footer>
+
+    <script src="js/mobile-navbar.js"></script>
   </body>
 
 </html>
