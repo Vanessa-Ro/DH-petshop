@@ -1,22 +1,36 @@
 <?php
 
-require_once('cookie.php');
+session_start();
 
 $email= $_POST["email"];
 $senha = $_POST["senha"];
 
+$_SESSION['email'] = $email;
+$_SESSION['senha'] = $senha;
+
 $email_erro = $senha_erro =  "";
 
-if(empty($email) or strstr($email," ")){
-  $email_erro = "Preencha o campo E-mail! <br/><br/>";
-  echo $email_erro;
+// validação: email
+if(empty(trim($email))){
+  $email_erro = "Preencha o campo E-mail!";
+  $_SESSION['email_erro'] = $email_erro;
+  header('Location: ' . $_SERVER['HTTP_REFERER']);
 } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-  echo "E-mail inválido!"."<br>";
+  $email_erro = "E-mail inválido!";
+  $_SESSION['email_erro'] = $email_erro;
+  header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 
-if(empty($senha) or strstr($senha," ") or (strlen($senha) <=5 )){
-  $senha_erro = "Preencha o campo Senha com no mínimo 6 caracteres! <br/><br/>";
-  echo $senha_erro;
+// validação: senha
+if(empty(trim($senha)) or (strlen($senha) <=5 )){
+  $senha_erro = "Preencha o campo Senha com no mínimo 6 caracteres!";
+  $_SESSION['senha_erro'] = $senha_erro;
+  header('Location: ' . $_SERVER['HTTP_REFERER']);
+}
+
+if($email_erro == "" && $senha_erro == ""){
+  $email = $this->getEmail();
+  $senha = $this->getSenha();
 }
 
 ?>

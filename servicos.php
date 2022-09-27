@@ -1,3 +1,7 @@
+<?php
+  include_once('php/Servico.php');
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -44,60 +48,28 @@
       <h2>Serviços</h2>
 
       <div class="container">
+        <?php
+          foreach($servicos as $servico) :
+        ?>
         <article>
           <img src="img/quadrado.png" alt="Quadrado cinza" />
 
           <div class="lateral">
             <h3>
-              Banho Completo
-              <span>R$ 40,00</span>
+            <?= $servico->getNomeServico() ?>
+              <span>R$ <?= $servico->getPreco() ?></span>
             </h3>
             <p>
-              Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et
-              quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
-              ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
-              sed quia consequuntur magni dolores eos qui ratione voluptatem
-              sequi nesciunt.
+              <?= $servico->getDescrServico() ?>
             </p>
-            <button>Agendar</button>
+            <a class="btn" href="agendamento.php">Agendar</a>
           </div>
         </article>
 
         <div class="barrinha"></div>
-
-        <article>
-          <img src="img/quadrado.png" alt="Quadrado cinza" />
-
-          <div class="lateral">
-            <h3>Banho Completo</h3>
-            <p>
-              Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et
-              quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
-              ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
-              sed quia consequuntur magni dolores eos qui ratione voluptatem
-              sequi nesciunt.
-            </p>
-            <button>Agendar</button>
-          </div>
-        </article>
-
-        <div class="barrinha"></div>
-
-        <article>
-          <img src="img/quadrado.png" alt="Quadrado cinza" />
-
-          <div class="lateral">
-            <h3>Banho Completo</h3>
-            <p>
-              Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et
-              quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
-              ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
-              sed quia consequuntur magni dolores eos qui ratione voluptatem
-              sequi nesciunt.
-            </p>
-            <button>Agendar</button>
-          </div>
-        </article>
+        <?php
+          endforeach;
+        ?>
       </div>
     </section>
 

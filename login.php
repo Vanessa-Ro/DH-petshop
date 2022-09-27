@@ -1,3 +1,7 @@
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -48,25 +52,39 @@
         <form method="post" action="php/validalogin.php">
           <h2>Login</h2>
 
-          <?php 
-            if(!isset($_COOKIE['permissao'])){
+          <?php
+            if(isset($_SESSION['email'])) {
           ?>
-          <input type="text" name="email" id="email" placeholder="email">
+          <input type="text" name="email" id="email" placeholder="Email" value="<?= isset($_SESSION['email']) ? $_SESSION['email'] : '' ?>" >
+          <?php
+            } else {
+          ?>
+          <input type="text" name="email" id="email" placeholder="Email" value="<?= isset($_COOKIE['email']) ? $_COOKIE['email'] : '' ?>" >
           <?php 
-          } else {
-            ?>
-            <input type="text" name="email" id="email" placeholder="email" value="<?= $_COOKIE['email'] ?>">
-        <?php
-          }
-        ?>
-          
-          <input type="password" name="senha" id="senha" placeholder="senha" >
+            }
+            
+            if(isset($_SESSION['email_erro'])) {
+          ?>
+            <span class="fs-6 text-danger mb-2"><?= $_SESSION['email_erro'] ?></span>
+          <?php
+            }
+            unset($_SESSION['email_erro']);
+          ?>
 
-          <input type="checkbox" name="check" value="1">
-          <label for="check">Aceito os cookies</label><br>
+          <input type="password" name="senha" id="senha" placeholder="Senha" value="<?= isset($_SESSION['senha']) ? $_SESSION['senha'] : '' ?>" >
+          <?php
+            if(isset($_SESSION['senha_erro'])) {
+          ?>
+            <span class="fs-6 text-danger mb-2"><?= $_SESSION['senha_erro'] ?></span>
+          <?php
+            }
+            unset($_SESSION['senha_erro']);
+            unset($_SESSION['email']);
+            unset($_SESSION['senha']);
+          ?>
 
           <div class="botao">
-            <button type="submit">entrar</button>
+            <button type="submit">Entrar</button>
           </div>
 
           <div class="cadastre-se">

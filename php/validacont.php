@@ -1,26 +1,40 @@
 <?php
 
+session_start();
+
 $nome = $_POST["nome"];
 $email= $_POST["email"];
 $mensagem= $_POST["mensagem"];
+
+$_SESSION['nome'] = $nome;
+$_SESSION['email'] = $email;
+$_SESSION['mensagem'] = $mensagem;
+
 $nome_erro = $email_erro = $mensagem_erro = "";
 
-if(empty($nome) or strstr($nome," ")){
-  $nome_erro = "Preencha o campo Nome! <br/><br/>";
-  echo $nome_erro;
+// validação: nome
+if(empty(trim($nome))){
+  $nome_erro = "Preencha o campo Nome!";
+  $_SESSION['nome_erro'] = $nome_erro;
+  header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 
-if(empty($email) or strstr($email," ")){
-  $email_erro = "Preencha o campo E-mail! <br/><br/>";
-  echo $email_erro;
+// validação: email
+if(empty(trim($email))){
+  $email_erro = "Preencha o campo E-mail!";
+  $_SESSION['email_erro'] = $email_erro;
+  header('Location: ' . $_SERVER['HTTP_REFERER']);
 } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-  echo "E-mail inválido!"."<br>";
+  $email_erro = "E-mail inválido!";
+  $_SESSION['email_erro'] = $email_erro;
+  header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 
-             
-if(empty($mensagem) or strstr($mensagem," ")){
-  $mensagem_erro = "Preencha o campo Mensagem! <br/><br/>";
-  echo $mensagem_erro;
+// validação: mensagem
+if(empty(trim($mensagem))){
+  $mensagem_erro = "Preencha o campo Mensagem!";
+  $_SESSION['mensagem_erro'] = $mensagem_erro;
+  header('Location: ' . $_SERVER['HTTP_REFERER']);
 }  
 
 ?>
