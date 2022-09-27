@@ -1,3 +1,7 @@
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -47,27 +51,42 @@
         <div class="geral">
           <div class="formulario">
             <form method="post" action="php/validacont.php">
-              <input
-                type="text"
-                name="nome"
-                id="nome"
-                placeholder="nome"
-              />
-              <input
-                type="text"
-                name="email"
-                id="email"
-                placeholder="email"
-              />
-              <textarea
-                name="mensagem"
-                id="mensagem"
-                cols="30"
-                rows="10"
-                placeholder="mensagem"
-              ></textarea>
 
-              <button>entrar</button>
+              <input type="text" name="nome" id="nome" placeholder="Nome" value="<?= isset($_SESSION['nome']) ? $_SESSION['nome'] : '' ?>" />
+              <?php
+                if(isset($_SESSION['nome_erro'])) {
+              ?>
+              <span class="fs-6 text-danger mb-2"><?= $_SESSION['nome_erro'] ?></span>
+              <?php
+                }
+                unset($_SESSION['nome_erro']);
+              ?>
+
+              <input type="text" name="email" id="email" placeholder="Email" value="<?= isset($_SESSION['email']) ? $_SESSION['email'] : '' ?>" />
+              <?php
+                if(isset($_SESSION['email_erro'])) {
+              ?>
+              <span class="fs-6 text-danger mb-2"><?= $_SESSION['email_erro'] ?></span>
+              <?php
+                }
+                unset($_SESSION['email_erro']);
+              ?>
+              
+              <textarea name="mensagem" id="mensagem" cols="30" rows="10" placeholder="Mensagem" value="<?= isset($_SESSION['mensagem']) ? $_SESSION['mensagem'] : '' ?>" ></textarea>
+              <?php
+                if(isset($_SESSION['mensagem_erro'])) {
+              ?>
+              <span class="fs-6 text-danger mb-2"><?= $_SESSION['mensagem_erro'] ?></span>
+              <?php
+                }
+                unset($_SESSION['mensagem_erro']);
+
+                unset($_SESSION['nome']);
+                unset($_SESSION['email']);
+                unset($_SESSION['mensagem']);
+              ?>
+
+              <button class="mt-2" type="submit">Enviar</button>
             </form>
           </div>
 

@@ -48,7 +48,7 @@
     </header>
 
     <main class="container mx-auto my-5 d-flex justify-content-center">
-      <section class="pets">
+      <section class="pets mx-4">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
             <button class="nav-link active" id="novopet-tab" data-bs-toggle="tab" data-bs-target="#novopet" type="button" role="tab" aria-controls="profile" aria-selected="false">Novo Pet</button>
@@ -57,7 +57,7 @@
             <button class="nav-link" id="meuspets-tab" data-bs-toggle="tab" data-bs-target="#meuspets" type="button" role="tab" aria-controls="home" aria-selected="true">Meus Pets</button>
           </li>
         </ul>
-        <div class="tab-content p-5" id="myTabContent">
+        <div class="tab-content p-5 d-flex justify-content-center" id="myTabContent">
           <div class="tab-pane fade show active" id="novopet" role="tabpanel" aria-labelledby="profile-tab">
             <div class="formulario">
               <form>

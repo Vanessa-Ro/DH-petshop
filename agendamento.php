@@ -48,7 +48,7 @@
     </header>
 
     <main class="container mx-auto my-5 d-flex justify-content-center">
-      <section class="pets">
+      <section class="pets mx-4">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
             <button class="nav-link active" id="novoagendamento-tab" data-bs-toggle="tab" data-bs-target="#novoagendamento" type="button" role="tab" aria-controls="profile" aria-selected="false">Novo Agendamento</button>

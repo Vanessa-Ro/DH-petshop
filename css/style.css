@@ -211,7 +211,7 @@ section.services .lateral p {
   padding-bottom: 20px;
 }
 
-section.services .lateral button {
+section.services .lateral a {
   border: none;
   background-color: #ffc107;
   padding: 8px;
@@ -299,8 +299,12 @@ form textarea,
 select {
   width: 100%;
   padding: 5px;
-  margin: 5px 0 20px;
+  margin: 15px 0 5px;
   resize: none;
+}
+
+input[type='checkbox'] {
+  width: auto;
 }
 
 form button {
@@ -350,11 +354,18 @@ section.login .formulario button {
   width: 100%;
 }
 
+section.cadastro .formulario .cadastre-se,
 section.login .formulario .cadastre-se {
   text-align: center;
   padding: 5px 0;
 }
 
+section.cadastro .formulario .cadastre-se:hover,
+section.login .formulario .cadastre-se:hover {
+  text-decoration: underline;
+}
+
+section.cadastro .formulario a,
 section.login .formulario a {
   font-size: 16px;
   color: #000000;
@@ -389,7 +400,7 @@ section.cadastro .formulario h2 {
   font-size: 40px;
   font-weight: 800;
   text-align: center;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 section.cadastro .formulario .botao {
@@ -557,7 +568,19 @@ footer .copyright h4 {
   }
 }
 
+
+@media (max-width: 890px) {
+  /* pets */
+  .pets {
+    width: 45rem;
+  }
+}
+
 @media (max-width: 815px) {
+  .container-pets {
+    grid-template-columns: auto;
+  }
+
   section.services .lateral h3 span {
     display: block;
   }

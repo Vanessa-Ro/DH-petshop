@@ -57,21 +57,27 @@
 
         <div class="artigos">
           <article>
-            <div class="quadrado"></div>
-            <h3>Banho completo</h3>
-            <p>R$40,00</p>
+            <a class="btn text-start" href="servicos.php">
+              <div class="quadrado"></div>
+              <h3>Banho completo</h3>
+              <p>R$40,00</p>
+            </a>
           </article>
 
           <article>
-            <div class="quadrado"></div>
-            <h3>Banho e tosa</h3>
-            <p>R$60,00</p>
+            <a class="btn text-start" href="servicos.php">
+              <div class="quadrado"></div>
+              <h3>Banho e tosa</h3>
+              <p>R$60,00</p>
+            </a>
           </article>
 
           <article>
-            <div class="quadrado"></div>
-            <h3>Consulta veterinária</h3>
-            <p>R$150,00</p>
+            <a class="btn text-start" href="servicos.php">
+              <div class="quadrado"></div>
+              <h3>Consulta veterinária</h3>
+              <p>R$150,00</p>
+            </a>
           </article>
         </div>
       </div>

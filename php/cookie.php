@@ -1,7 +1,7 @@
 <?php
 
   $nome = $_POST["email"];
-  $tempo = 5;
+  $tempo = 30;
   $cookie = $_POST["check"];
 
   if(!empty($nome)){
