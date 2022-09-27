@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petshop - Trabalhe Conosco</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Trabalhe Conosco</h1>
+
+        <form>
+            <label for="nome-completo">Nome Completo</label>
+            <input type="text" name="nome-completo" id="nome-completo" required>
+
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required>
+
+            <label for="telefone">Telefone</label>
+            <input type="tel" name="telefone" id="telefone" placeholder="(99) 9999-9999">
+
+            <label for="curriculo">Currículo</label>
+            <input type="file" name="curriculo" id="curriculo">
+
+            <label for="descricao">Descrição</label>
+            <textarea name="descricao" id="descricao"></textarea>
+
+            <label for="data-nascimento">Data de Nascimento</label>
+            <input type="date" name="data-nascimento" id="data-nascimento">
+
+            <label for="carga-horaria">Carga Horária</label>
+            <select name="carga-horaria" id="carga-horaria">
+                <option value="Tempo Integral">Tempo Integral</option>
+                <option value="Meio Período">Meio Período</option>
+                <option value="Freelancer">Freelancer</option>
+            </select>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <!-- Leitura do JavaScript após a leitura do HTML -->
+    <script src="js/main.js"></script>
+    <script src="js/validacao.js"></script>
+</body>
+</html>
