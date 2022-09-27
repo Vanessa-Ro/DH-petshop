@@ -57,6 +57,9 @@ if(empty(trim($csenha))){
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 }  
 
+// if(!(isset($_SESSION['nome_erro']) && isset($_SESSION['email_erro']) && isset($_SESSION['senha_erro']) && isset($_SESSION['csenha_erro'])))
+// header('Location: login.php');
+
 if ($nome_erro == "" && $email_erro == "" && $senha_erro == "" && $csenha_erro == "") {
   $usuario = new Usuario($id_usuario, $nome, $email, $senha);
   $id_usuario++;
