@@ -85,6 +85,9 @@ include_once('php/Animal.php');
                 unset($_SESSION['nome_erro']);
               ?>
 
+              <label for="photo">Foto do pet</label>
+              <input type="file" name="photo" id="photo">
+
               <label for="age">Idade</label>
               <input type="text" name="age" id="age" placeholder="Ex: 9" value="<?= isset($_SESSION['idade']) ? $_SESSION['idade'] : '' ?>" />
               <?php
