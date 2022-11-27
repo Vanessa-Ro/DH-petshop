@@ -1,10 +1,10 @@
 <?php
   session_start();
-  include_once('php/Animal.php');
   include_once('php/Servico.php');
-  include_once('php/Agendamento.php');
-
+  
   if(isset($_SESSION['usuario'])) {
+    include_once('php/Animal.php');
+    include_once('php/Agendamento.php');
 ?>
 
 <!DOCTYPE html>
@@ -43,9 +43,9 @@
             <li>
               <a href="contato.php">Contato</a>
             </li>
-            <li>
+            <!-- <li>
               <a href="login.php">Login</a>
-            </li>
+            </li> -->
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
                 <img src="img/icon-usuario.png" alt="Ícone usuário" class="icon-user" />
@@ -82,7 +82,7 @@
                   <?php
                     foreach($servicos as $servico) :
                   ?>
-                  <option value="<?= $servico->getNomeServico() ?>"><?= $servico->getNomeServico() ?></option>
+                  <option value="<?= $servico['id_servico'] ?>"><?= $servico['nome'] ?></option>
                   <?php
                     endforeach;
                   ?>
@@ -115,7 +115,7 @@
                   <?php
                     foreach($pets as $pet) :
                   ?>
-                  <option value="<?= $pet->getNome() ?>"><?= $pet->getNome() ?></option>
+                  <option value="<?= $pet['id_pet'] ?>"><?= $pet['nome'] ?></option>
                   <?php
                     endforeach;
                   ?>

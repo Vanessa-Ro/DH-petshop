@@ -1,8 +1,8 @@
 <?php
 session_start();
-include_once('php/Animal.php');
 
 if(isset($_SESSION['usuario'])) {
+  include_once('php/Animal.php');
 ?>
 
 <!DOCTYPE html>
@@ -42,9 +42,9 @@ if(isset($_SESSION['usuario'])) {
           <li>
             <a href="contato.php">Contato</a>
           </li>
-          <li>
+          <!-- <li>
             <a href="login.php">Login</a>
-          </li>
+          </li> -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <img src="img/icon-usuario.png" alt="Ícone usuário" class="icon-user" />

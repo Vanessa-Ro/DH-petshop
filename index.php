@@ -1,3 +1,8 @@
+<?php
+  session_start();
+  include_once('php/Servico.php');
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -12,6 +17,8 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -32,9 +39,31 @@
             <li>
               <a href="contato.php">Contato</a>
             </li>
+
+            <?php
+              if(!isset($_SESSION['usuario'])) {
+            ?>
             <li>
               <a href="login.php">Login</a>
             </li>
+            <?php
+              }
+              else {    
+            ?>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="img/icon-usuario.png" alt="Ícone usuário" class="icon-user" />
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                <li><a class="dropdown-item text-secondary" href="agendamento.php">Agendamentos</a></li>
+                <li><a class="dropdown-item text-secondary" href="pets.php">Meus pets</a></li>
+                <li><a class="dropdown-item text-danger" href="php/validacao/validalogout.php">Sair</a></li>
+              </ul>
+            </li>
+            <?php
+              }
+            ?>
+
           </ul>
         </nav>
       </div>
@@ -56,29 +85,19 @@
         <h2>Serviços</h2>
 
         <div class="artigos">
+          <?php
+            foreach($servicos as $servico) :
+          ?>
           <article>
             <a class="btn text-start" href="servicos.php">
               <div class="quadrado"></div>
-              <h3>Banho completo</h3>
-              <p>R$40,00</p>
+              <h3><?= $servico['nome'] ?></h3>
+              <p>R$ <?= $servico['preco'] ?>,00</p>
             </a>
           </article>
-
-          <article>
-            <a class="btn text-start" href="servicos.php">
-              <div class="quadrado"></div>
-              <h3>Banho e tosa</h3>
-              <p>R$60,00</p>
-            </a>
-          </article>
-
-          <article>
-            <a class="btn text-start" href="servicos.php">
-              <div class="quadrado"></div>
-              <h3>Consulta veterinária</h3>
-              <p>R$150,00</p>
-            </a>
-          </article>
+          <?php
+          endforeach;
+          ?>
         </div>
       </div>
     </section>

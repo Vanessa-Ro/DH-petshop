@@ -1,5 +1,7 @@
 <?php
   session_start();
+
+  if(!isset($_SESSION['usuario'])) {
 ?>
 
 <!DOCTYPE html>
@@ -111,3 +113,9 @@
 
 </body>
 </html>
+<?php
+  }
+  else {
+    header('Location: pets.php');
+  }
+?>

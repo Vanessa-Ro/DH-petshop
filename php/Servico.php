@@ -1,5 +1,7 @@
 <?php
 
+  include_once('conexao.php'); 
+
   class Servico {
     private $id_servico;
     private $nome_servico;
@@ -42,11 +44,19 @@
     }
   }
 
-  $banho = new Servico(1, "Banho completo", "Um banho completo para deixar seu pet cheiroso e feliz", "40,00");
-  $tosa = new Servico(2, "Tosa", "Dar aquela aparada nos pelos para manter o charme", "40,00");
-  $banho_e_tosa = new Servico(3, "Banho e tosa", "Dia de spa para o seu pet, com banho e tosa para dar um glow no visual", "60,00");
-  $consulta = new Servico(4, "Consulta veterinária", "Fazer um checkup na saúde", "150,00");
+  // $banho = new Servico(1, "Banho completo", "Um banho completo para deixar seu pet cheiroso e feliz", "40,00");
+  // $tosa = new Servico(2, "Tosa", "Dar aquela aparada nos pelos para manter o charme", "40,00");
+  // $banho_e_tosa = new Servico(3, "Banho e tosa", "Dia de spa para o seu pet, com banho e tosa para dar um glow no visual", "60,00");
+  // $consulta = new Servico(4, "Consulta veterinária", "Fazer um checkup na saúde", "150,00");
 
-  $servicos = array($banho, $tosa, $banho_e_tosa, $consulta);
+  // $servicos = array($banho, $tosa, $banho_e_tosa, $consulta);
+
+  // get servicos
+  $sql = "SELECT * FROM servico";
+  
+  $stmtSelect = $con->prepare($sql);
+  $stmtSelect->execute();
+  
+  $servicos = $stmtSelect->fetchAll();
 
 ?>

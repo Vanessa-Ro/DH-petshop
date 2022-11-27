@@ -1,4 +1,5 @@
 <?php
+  session_start();
   include_once('php/Servico.php');
 ?>
 
@@ -16,6 +17,8 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -36,9 +39,31 @@
             <li>
               <a href="contato.php">Contato</a>
             </li>
+            
+            <?php
+              if(!isset($_SESSION['usuario'])) {
+            ?>
             <li>
               <a href="login.php">Login</a>
             </li>
+            <?php
+              }
+              else {    
+            ?>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="img/icon-usuario.png" alt="Ícone usuário" class="icon-user" />
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                <li><a class="dropdown-item text-secondary" href="agendamento.php">Agendamentos</a></li>
+                <li><a class="dropdown-item text-secondary" href="pets.php">Meus pets</a></li>
+                <li><a class="dropdown-item text-danger" href="php/validacao/validalogout.php">Sair</a></li>
+              </ul>
+            </li>
+            <?php
+              }
+            ?>
+            
           </ul>
         </nav>
       </div>
@@ -56,11 +81,11 @@
 
           <div class="lateral">
             <h3>
-            <?= $servico->getNomeServico() ?>
-              <span>R$ <?= $servico->getPreco() ?></span>
+            <?= $servico['nome'] ?>
+              <span>R$ <?= $servico['preco'] ?>,00</span>
             </h3>
             <p>
-              <?= $servico->getDescrServico() ?>
+              <?= $servico['descricao'] ?>
             </p>
             <a class="btn" href="agendamento.php">Agendar</a>
           </div>
