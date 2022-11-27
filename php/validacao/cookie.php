@@ -2,7 +2,13 @@
 
   $nome = $_POST["email"];
   $tempo = 15;
-  $cookie = $_POST["check"];
+
+  if(isset($_POST["checkbox"])) {
+    $cookie = $_POST["checkbox"];
+  }
+  else {
+    $cookie = false;
+  }
 
   if(!empty($nome)){
     if($cookie){
@@ -10,13 +16,15 @@
       if(!isset($_COOKIE[$nome])){
         setcookie("email", $nome, time() + $tempo, "/");
         
-        header("Location: ../../login.php");
+        // header("Location: ../../login.php");
       } else {
         echo "cookie já existe<br><br>";
       }
-    } else {
-      header("Location: ../../login.php");
-    }
+    } 
+    // else {
+    //   header('Location: validacad.php');
+    //   // header("Location: ../../login.php");
+    // }
   }
 
 ?>

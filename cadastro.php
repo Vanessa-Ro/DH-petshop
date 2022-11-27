@@ -51,7 +51,14 @@
         <div class="formulario">
           <form method="post" action="php/validacao/validacad.php">
             <h2>Cadastre-se</h2>
-
+            <?php
+              if(isset($_SESSION['cadastro_erro'])) {
+            ?>
+            <span class="fs-6 text-danger mb-2"><?= $_SESSION['cadastro_erro'] ?></span>
+            <?php
+              }
+              unset($_SESSION['cadastro_erro']);
+            ?>
             <input type="text" name="nome" id="nome" placeholder="Nome" value="<?= isset($_SESSION['nome']) ? $_SESSION['nome'] : '' ?>" />
             <?php
               if(isset($_SESSION['nome_erro'])) {
@@ -99,8 +106,8 @@
               unset($_SESSION['csenha_erro']);
             ?>
             <br>
-            <input type="checkbox" name="check" id="check" <?= isset($_SESSION['checkbox']) ? 'checked' : '' ?>>
-            <label for="check">Aceito os cookies</label>
+            <input type="checkbox" name="checkbox" id="checkbox" <?= isset($_SESSION['checkbox']) ? 'checked' : '' ?>>
+            <label for="checkbox">Aceito os cookies</label>
             
             <?php
               unset($_SESSION['nome']);

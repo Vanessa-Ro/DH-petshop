@@ -51,11 +51,17 @@
       <div class="formulario">
         <form method="post" action="php/validacao/validalogin.php">
           <h2>Login</h2>
-
           <?php
-            if(isset($_SESSION['email'])) {
+            if(isset($_SESSION['login_erro'])) {
           ?>
-          <input type="text" name="email" id="email" placeholder="Email" value="<?= isset($_SESSION['email']) ? $_SESSION['email'] : '' ?>" >
+          <span class="fs-6 text-danger mb-2"><?= $_SESSION['login_erro'] ?></span>
+          <?php
+            }
+            unset($_SESSION['login_erro']);
+
+            if(isset($_SESSION['emaillogin'])) {
+          ?>
+          <input type="text" name="email" id="email" placeholder="Email" value="<?= isset($_SESSION['emaillogin']) ? $_SESSION['emaillogin'] : '' ?>" >
           <?php
             } else {
           ?>
@@ -80,7 +86,7 @@
             }
             unset($_SESSION['senha_erro']);
             
-            unset($_SESSION['email']);
+            unset($_SESSION['emaillogin']);
             unset($_SESSION['senha']);
           ?>
 

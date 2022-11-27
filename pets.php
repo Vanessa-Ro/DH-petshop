@@ -1,6 +1,8 @@
 <?php
 session_start();
 include_once('php/Animal.php');
+
+if(isset($_SESSION['usuario'])) {
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +52,7 @@ include_once('php/Animal.php');
             <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
               <li><a class="dropdown-item text-secondary" href="agendamento.php">Agendamentos</a></li>
               <li><a class="dropdown-item text-secondary" href="pets.php">Meus pets</a></li>
-              <li><a class="dropdown-item text-danger" href="#">Sair</a></li>
+              <li><a class="dropdown-item text-danger" href="php/validacao/validalogout.php">Sair</a></li>
             </ul>
           </li>
         </ul>
@@ -71,7 +73,15 @@ include_once('php/Animal.php');
       <div class="tab-content p-5 d-flex justify-content-center" id="myTabContent">
         <div class="tab-pane fade show active" id="novopet" role="tabpanel" aria-labelledby="profile-tab">
           <div class="formulario">
-            <form method="post" action="php/validacao/validapets.php">
+            <form method="post" action="php/validacao/validapets.php" enctype="multipart/form-data">
+              <?php
+                if(isset($_SESSION['cad_sucesso'])) {
+              ?>
+              <span class="fs-5 text-success mb-2"><?= $_SESSION['cad_sucesso'] ?></span><br>
+              <?php
+                }
+                unset($_SESSION['cad_sucesso']);
+              ?>
               <h2>Novo pet</h2>
 
               <label for="name">Nome do pet</label>
@@ -87,6 +97,14 @@ include_once('php/Animal.php');
 
               <label for="photo">Foto do pet</label>
               <input type="file" name="photo" id="photo">
+              <?php
+                if(isset($_SESSION['foto_erro'])) {
+              ?>
+              <span class="fs-6 text-danger mb-2"><?= $_SESSION['foto_erro'] ?></span><br>
+              <?php
+                }
+                unset($_SESSION['foto_erro']);
+              ?>
 
               <label for="age">Idade</label>
               <input type="text" name="age" id="age" placeholder="Ex: 9" value="<?= isset($_SESSION['idade']) ? $_SESSION['idade'] : '' ?>" />
@@ -145,11 +163,12 @@ include_once('php/Animal.php');
               foreach ($pets as $pet) :
             ?>
               <div class="card m-2" style="width: 20rem;">
-                <div class="card-body">
-                  <h5 class="card-title"><?= $pet->getNome() ?></h5>
-                  <h6 class="card-subtitle mb-2 text-muted"><?= $pet->getRaca() ?></h6>
-                  <p class="card-text"><?= $pet->getIdade() ?> anos</p>
-                  <a href="#" class="card-link">Editar</a>
+                <div class="card-body position-relative">
+                  <img src="php/uploads/<?= $pet['foto'] ?>" alt="" class="w-100 mb-3 rounded">
+                  <h5 class="card-title"><?= $pet['nome'] ?></h5>
+                  <h6 class="card-subtitle mb-2 text-muted"><?= $pet['raca'] ?></h6>
+                  <p class="card-text"><?= $pet['idade'] ?> anos</p>
+                  <!-- <a href="#" class="card-link">Editar</a> -->
                 </div>
               </div>
             <?php
@@ -196,3 +215,9 @@ include_once('php/Animal.php');
 </body>
 
 </html>
+<?php
+  }
+  else {
+    header('Location: login.php');
+  }
+?>

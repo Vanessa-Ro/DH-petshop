@@ -3,6 +3,8 @@
   include_once('php/Animal.php');
   include_once('php/Servico.php');
   include_once('php/Agendamento.php');
+
+  if(isset($_SESSION['usuario'])) {
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +53,7 @@
               <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink" >
                 <li><a class="dropdown-item text-secondary" href="agendamento.php">Agendamentos</a></li>
                 <li><a class="dropdown-item text-secondary" href="pets.php">Meus pets</a></li>
-                <li><a class="dropdown-item text-danger" href="#">Sair</a></li>
+                <li><a class="dropdown-item text-danger" href="php/validacao/validalogout.php">Sair</a></li>
               </ul>
             </li>
           </ul>
@@ -187,3 +189,9 @@
     
   </body>
 </html>
+<?php
+  }
+  else {
+    header('Location: login.php');
+  }
+?>

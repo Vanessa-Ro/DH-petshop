@@ -1,14 +1,15 @@
 <?php
 
 session_start();
+include_once('../../conexao.php');
 
 $email= $_POST["email"];
 $senha = $_POST["senha"];
 
-$_SESSION['email'] = $email;
+$_SESSION['emaillogin'] = $email;
 $_SESSION['senha'] = $senha;
 
-$email_erro = $senha_erro =  "";
+$email_erro = $senha_erro = $login_erro = "";
 
 // validação: email
 if(empty(trim($email))){
@@ -28,9 +29,24 @@ if(empty(trim($senha)) or (strlen($senha) <=5 )){
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 
-// if($email_erro == "" && $senha_erro == ""){
-//   $email = $this->getEmail();
-//   $senha = $this->getSenha();
-// }
+// login
+$senha = sha1($senha);
+
+$sql = "SELECT * FROM dono WHERE email = '$email' AND senha = '$senha' LIMIT 1";
+
+$stmtSelect = $con->prepare($sql);
+$stmtSelect->execute();
+
+$login = $stmtSelect->fetch();
+
+if(empty($login)) {
+  $login_erro = "Usuário e/ou senha incorretos.";
+  $_SESSION['login_erro'] = $login_erro;
+  header('Location: ' . $_SERVER['HTTP_REFERER']);
+}
+else {
+  $_SESSION['usuario'] = $login;
+  header('Location: ../../pets.php');
+}
 
 ?>

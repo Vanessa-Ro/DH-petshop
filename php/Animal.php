@@ -1,5 +1,7 @@
 <?php
 
+  include_once('conexao.php');
+
   class Animal {
     private $nome;
     private $especie;
@@ -60,9 +62,12 @@
     }  
   }
 
-  $pet1 = new Animal(1, "Max", "Cachorrinho", "4", "Pequeno", "Auau");
-  $pet2 = new Animal(2, "Bella", "Cachorrinha", "6", "Pequeno", "Auau");
-
-  $pets = array($pet1, $pet2);
+  // get pets
+  $sql = "SELECT * FROM pet WHERE fk_dono_id_dono = " . $_SESSION['usuario']['id_dono'];
+  
+  $stmtSelect = $con->prepare($sql);
+  $stmtSelect->execute();
+  
+  $pets = $stmtSelect->fetchAll();
 
 ?>
