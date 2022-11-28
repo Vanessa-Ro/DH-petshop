@@ -77,7 +77,7 @@
           foreach($servicos as $servico) :
         ?>
         <article>
-          <img src="img/quadrado.png" alt="Quadrado cinza" />
+          <img src="img/<?= $servico['foto'] ?>" alt="" class="rounded" />
 
           <div class="lateral">
             <h3>

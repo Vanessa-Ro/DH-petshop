@@ -90,7 +90,9 @@
           ?>
           <article>
             <a class="btn text-start" href="servicos.php">
-              <div class="quadrado"></div>
+              <div class="quadrado position-relative mb-3 rounded">
+                <img src="img/<?= $servico['foto'] ?>" alt="" class="w-100 rounded">
+              </div>
               <h3><?= $servico['nome'] ?></h3>
               <p>R$ <?= $servico['preco'] ?>,00</p>
             </a>

@@ -119,3 +119,5 @@ if($valido) {
     echo "Erro: " . $e->getMessage();
   }
 }
+
+?>

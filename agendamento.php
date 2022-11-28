@@ -75,6 +75,22 @@
           <div class="tab-pane fade show active" id="novoagendamento" role="tabpanel" aria-labelledby="profile-tab">
             <div class="formulario">
               <form method="post" action="php/validacao/validaagend.php">
+                <?php
+                  if(isset($_SESSION['agendamento_sucesso'])) {
+                ?>
+                <span class="fs-5 text-success mb-2"><?= $_SESSION['agendamento_sucesso'] ?></span><br>
+                <?php
+                  }
+                  unset($_SESSION['agendamento_sucesso']);
+                ?>
+                <?php
+                  if(isset($_SESSION['cancelamento_sucesso'])) {
+                ?>
+                <span class="fs-5 text-warning mb-2"><?= $_SESSION['cancelamento_sucesso'] ?></span><br>
+                <?php
+                  }
+                  unset($_SESSION['cancelamento_sucesso']);
+                ?>
                 <h2>Novo agendamento</h2>
       
                 <label for="service">Serviço</label>
@@ -89,7 +105,7 @@
                 </select>
 
                 <label for="date">Data</label>
-                <input type="date" name="date" id="date" placeholder="Data" />
+                <input type="date" name="date" id="date" placeholder="Data" min="<?= date("Y-m-d") ?>" />
                 <?php
                   if(isset($_SESSION['data_erro'])) {
                 ?>
@@ -100,7 +116,9 @@
                 ?>
 
                 <label for="time">Horário</label>
-                <input type="time" name="time" id="time" placeholder="Horário" />
+                <input type="time" name="time" id="time" placeholder="Horário" min="<?= date("H:i") ?>" max="17:00"/>
+                <span class="fs-6 text-muted">Aberto das 9h00 às 17h00</span>
+                <br>
                 <?php
                   if(isset($_SESSION['hora_erro'])) {
                 ?>
@@ -134,10 +152,13 @@
               ?>
               <div class="card m-2" style="width: 20rem;">
                 <div class="card-body">
-                  <h5 class="card-title"><?= $pet1->getNome() ?></h5>
-                  <h6 class="card-subtitle mb-2 text-muted"><?= $consulta->getNomeServico() ?></h6>
-                  <p class="card-text"><?= $agendamento->getData() ?> - <?= $agendamento->getHorario() ?></p>
-                  <a href="#" class="card-link text-danger">Cancelar</a>
+                  <h5 class="card-title"><?= $agendamento['nome_pet'] ?></h5>
+                  <h6 class="card-subtitle mb-2 text-muted"><?= $agendamento['nome_servico'] ?></h6>
+                  <p class="card-text"><?= date("d/m/Y", strtotime($agendamento['data_agendamento'])) ?> - <?= date("H:i", strtotime($agendamento['hora'])) ?></p>
+                  <form method="post" action="php/validacao/cancelamento.php">
+                    <input type="hidden" name="agendamento" value="<?= $agendamento['id_agendamento'] ?>" >
+                    <button type="submit" href="#" class="card-link text-danger btn btn-link p-0 fs-6" style="text-transform: capitalize">Cancelar</button>
+                  </form>
                 </div>
               </div>
               <?php
