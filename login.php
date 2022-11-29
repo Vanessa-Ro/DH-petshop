@@ -60,17 +60,9 @@
           <?php
             }
             unset($_SESSION['login_erro']);
-
-            if(isset($_SESSION['emaillogin'])) {
-          ?>
-          <input type="text" name="email" id="email" placeholder="Email" value="<?= isset($_SESSION['emaillogin']) ? $_SESSION['emaillogin'] : '' ?>" >
-          <?php
-            } else {
           ?>
           <input type="text" name="email" id="email" placeholder="Email" value="<?= isset($_COOKIE['email']) ? $_COOKIE['email'] : '' ?>" >
-          <?php 
-            }
-            
+          <?php             
             if(isset($_SESSION['email_erro'])) {
           ?>
             <span class="fs-6 text-danger mb-2"><?= $_SESSION['email_erro'] ?></span>
@@ -88,8 +80,8 @@
             }
             unset($_SESSION['senha_erro']);
             
-            unset($_SESSION['emaillogin']);
-            unset($_SESSION['senha']);
+            // unset($_SESSION['emaillogin']);
+            // unset($_SESSION['senha']);
           ?>
 
           <div class="botao">

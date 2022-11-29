@@ -10,7 +10,7 @@ $especie = $_POST["species"];
 $raca = $_POST["breed"];
 $porte = $_POST["size"];
 
-$_SESSION['nome'] = $nome;
+$_SESSION['nomepet'] = $nome;
 $_SESSION['idade'] = $idade;
 $_SESSION['especie'] = $especie;
 $_SESSION['raca'] = $raca;
@@ -19,6 +19,7 @@ $valido = true;
 
 $nome_erro = $idade_erro = $especie_erro = $raca_erro = $foto_erro ="";
 
+// validação: nome pet
 if (empty(trim($nome))) {
   $nome_erro = "Preencha o campo Nome do pet!";
   $_SESSION['nome_erro'] = $nome_erro;
@@ -26,6 +27,7 @@ if (empty(trim($nome))) {
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 
+// validação: idade
 if (empty(trim($idade))) {
   $idade_erro = "Preencha o campo Idade!";
   $_SESSION['idade_erro'] = $idade_erro;
@@ -38,6 +40,7 @@ if (empty(trim($idade))) {
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 
+// validação: espécie
 if (empty(trim($especie))) {
   $especie_erro = "Preencha o campo Espécie!";
   $_SESSION['especie_erro'] = $especie_erro;
@@ -45,6 +48,7 @@ if (empty(trim($especie))) {
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 
+// validação: raça
 if (empty(trim($raca))) {
   $raca_erro = "Preencha o campo Raça!";
   $_SESSION['raca_erro'] = $raca_erro;
@@ -113,6 +117,12 @@ if($valido) {
 
     $cad_sucesso = "Pet cadastrado com sucesso!";
     $_SESSION['cad_sucesso'] = $cad_sucesso;
+
+    unset($_SESSION['nomepet']);
+    unset($_SESSION['idade']);
+    unset($_SESSION['especie']);
+    unset($_SESSION['raca']);
+
     header('Location: ' . $_SERVER['HTTP_REFERER']);
   } catch (PDOException $e) {
     $con->rollback();

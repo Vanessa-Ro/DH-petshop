@@ -85,7 +85,7 @@ if(isset($_SESSION['usuario'])) {
               <h2>Novo pet</h2>
 
               <label for="name">Nome do pet</label>
-              <input type="text" name="name" id="name" placeholder="Ex: Max" value="<?= isset($_SESSION['nome']) ? $_SESSION['nome'] : '' ?>" />
+              <input type="text" name="name" id="name" placeholder="Ex: Max" value="<?= isset($_SESSION['nomepet']) ? $_SESSION['nomepet'] : '' ?>" />
               <?php
                 if(isset($_SESSION['nome_erro'])) {
               ?>
@@ -138,7 +138,7 @@ if(isset($_SESSION['usuario'])) {
                 }
                 unset($_SESSION['raca_erro']);
 
-                unset($_SESSION['nome']);
+                unset($_SESSION['nomepet']);
                 unset($_SESSION['idade']);
                 unset($_SESSION['especie']);
                 unset($_SESSION['raca']);

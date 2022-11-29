@@ -24,12 +24,15 @@ $_SESSION['senha'] = $senha;
 $_SESSION['csenha'] = $csenha;
 $_SESSION['checkbox'] = $checkbox;
 
+$valido = true;
+
 $nome_erro = $email_erro = $senha_erro = $csenha_erro = $cadastro_erro = "";
 
 // validação: nome
 if(empty(trim($nome))){
   $nome_erro = "Preencha o campo Nome!";
   $_SESSION['nome_erro'] = $nome_erro;
+  $valido = false;
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 
@@ -37,10 +40,12 @@ if(empty(trim($nome))){
 if(empty(trim($email))){
   $email_erro = "Preencha o campo E-mail!";
   $_SESSION['email_erro'] = $email_erro;
+  $valido = false;
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
   $email_erro = "E-mail inválido!";
   $_SESSION['email_erro'] = $email_erro;
+  $valido = false;
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 
@@ -48,10 +53,12 @@ if(empty(trim($email))){
 if(empty(trim($senha)) or (strlen($senha) <=5 )){
   $senha_erro = "Preencha o campo Senha com no mínimo 6 caracteres!";
   $_SESSION['senha_erro'] = $senha_erro;
+  $valido = false;
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 } else if ($senha != $csenha) {
   $senha_erro_dif = "As senhas não correspondem!";
   $_SESSION['senha_erro_dif'] = $senha_erro_dif;
+  $valido = false;
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 }  
 
@@ -59,6 +66,7 @@ if(empty(trim($senha)) or (strlen($senha) <=5 )){
 if(empty(trim($csenha))){
   $csenha_erro = "Preencha o campo Confirmar Senha!";
   $_SESSION['csenha_erro'] = $csenha_erro;
+  $valido = false;
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 }  
 
@@ -73,25 +81,38 @@ $login = $stmtSelect->fetchAll();
 if(!empty($login)){
   $cadastro_erro = "Usuário já cadastrado.";
   $_SESSION['cadastro_erro'] = $cadastro_erro;
+  $valido = false;
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 else {
-  $senha = sha1($senha);
+  if($valido) {
+    $senha = sha1($senha);
+    
+    try {
+      $con->beginTransaction();
+    
+      $stmtInsert = $con->prepare("INSERT INTO dono(nome, email, senha) VALUES (:nome, :email, :senha)");
+    
+      $stmtInsert->bindParam(":nome", $nome);
+      $stmtInsert->bindParam(":email", $email);
+      $stmtInsert->bindParam(":senha", $senha);
+      $stmtInsert->execute();
+    
+      $con->commit();
   
-  try {
-    $con->beginTransaction();
+      $sql = "SELECT * FROM dono WHERE email = '$email' LIMIT 1";
+      
+      $stmtSelect = $con->prepare($sql);
+      $stmtSelect->execute();
+      
+      $login = $stmtSelect->fetch();
   
-    $stmtInsert = $con->prepare("INSERT INTO dono(nome, email, senha) VALUES (:nome, :email, :senha)");
-  
-    $stmtInsert->bindParam(":nome", $nome);
-    $stmtInsert->bindParam(":email", $email);
-    $stmtInsert->bindParam(":senha", $senha);
-    $stmtInsert->execute();
-  
-    $con->commit();
-  } catch (PDOException $e) {
-    $con->rollback();
-    echo "Erro: " . $e->getMessage();
+      $_SESSION['usuario'] = $login;
+      header('Location: ../../pets.php');
+    } catch (PDOException $e) {
+      $con->rollback();
+      echo "Erro: " . $e->getMessage();
+    }
   }
 }
 

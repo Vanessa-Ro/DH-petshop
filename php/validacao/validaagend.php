@@ -16,6 +16,7 @@ $valido = true;
 
 $data_erro = $hora_erro = "";
 
+// validação: data
 if(empty($data) or strstr($data," ")){
   $data_erro = "Preencha o campo Data!";
   $_SESSION['data_erro'] = $data_erro;
@@ -28,6 +29,7 @@ if(empty($data) or strstr($data," ")){
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 } 
 
+// validação: hora
 if(empty($hora) or strstr($hora," ")){
   $hora_erro = "Preencha o campo Horário!";
   $_SESSION['hora_erro'] = $hora_erro;
@@ -40,6 +42,7 @@ if(empty($hora) or strstr($hora," ")){
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 } 
 
+// registro de agendamento
 if($valido) {
   try {
     $con->beginTransaction();

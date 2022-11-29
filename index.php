@@ -72,8 +72,7 @@
     <section class="home">
       <div class="container">
         <h1>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt
+          O Petshop DH é lugar ideal para dar ao seu pet o cuidado e o carinho que ele merece
         </h1>
 
         <img src="img/home.png" alt="Ilustração homem passeando com cachorro" />
@@ -115,15 +114,10 @@
 
         <div class="descricao">
           <h3>
-            Sed ut perspiciatis unde iste natus error sit voluptatem accusantium
-            doloremque laudantium,
+            Atendimento especializado
           </h3>
           <p>
-            Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et
-            quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
-            voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-            consequuntur magni dolores eos qui ratione voluptatem sequi
-            nesciunt.
+            Com qualificação e equipamentos trazemos para você e seu pet o melhor atendimento de cuidados estéticos e de saúde, para mentê-lo sempre bonito e saudável.
           </p>
         </div>
       </div>

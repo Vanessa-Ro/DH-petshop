@@ -1,7 +1,9 @@
 <?php
 
   $nome = $_POST["email"];
-  $tempo = 15;
+  $tempo = 1800;
+
+  print_r($_POST["checkbox"]);
 
   if(isset($_POST["checkbox"])) {
     $cookie = $_POST["checkbox"];

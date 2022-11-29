@@ -6,9 +6,6 @@ include_once('../../conexao.php');
 $email= $_POST["email"];
 $senha = $_POST["senha"];
 
-$_SESSION['emaillogin'] = $email;
-$_SESSION['senha'] = $senha;
-
 $email_erro = $senha_erro = $login_erro = "";
 
 // validação: email
